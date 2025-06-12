@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Inscription</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            margin: 0;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        /* Menu burger */
+        .menu-icon {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            font-size: 28px;
+            cursor: pointer;
+            user-select: none;
+            z-index: 1001;
+        }
+
+        /* Menu déroulant */
+        .nav-menu {
+            position: fixed;
+            top: 60px;
+            right: 20px;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            display: none;
+            flex-direction: column;
+            min-width: 150px;
+            z-index: 1000;
+        }
+
+        .nav-menu a {
+            padding: 10px;
+            text-decoration: none;
+            color: #333;
+            border-bottom: 1px solid #eee;
+            font-weight: 600;
+        }
+
+        .nav-menu a:last-child {
+            border-bottom: none;
+        }
+
+        .nav-menu a:hover {
+            background-color: #f0f0f0;
+        }
+
+        /* Formulaire */
+        form {
+            background: white;
+            max-width: 450px;
+            margin: 100px auto 50px;
+            padding: 25px 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 12px rgba(0,0,0,0.1);
+            text-align: left;
+        }
+
+        form p.clignote {
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            color: #3498db;
+            animation: clignoter 1.5s infinite;
+            margin-bottom: 25px;
+        }
+
+        @keyframes clignoter {
+            0% {opacity: 1;}
+            50% {opacity: 0.3;}
+            100% {opacity: 1;}
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        select,
+        input[type="date"] {
+            width: 100%;
+            padding: 8px 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+
+        input[type="submit"].button {
+            margin-top: 25px;
+            width: 100%;
+            background-color: #3498db;
+            border: none;
+            padding: 12px;
+            font-size: 16px;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"].button:hover {
+            background-color: #2980b9;
+        }
+
+        marquee h1 {
+            color: #e74c3c;
+            margin: 0;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <marquee><h1>Bienvenue, veuillez vous inscrire !</h1></marquee>
+
+    <!-- Menu burger -->
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+
+    <!-- Menu déroulant -->
+    <div class="nav-menu" id="navMenu">
+        <a href="connexion.php">🔑 Connexion</a>
+        <a href="inscription.php">📝 Inscription</a>
+    </div>
+
+    <!-- Formulaire d'inscription -->
+    <form action="incription.php" method="POST" autocomplete="off">
+        <p class="clignote">Inscription</p>
+
+        <label for="nom">Nom :</label>
+        <input class="saisi" type="text" id="nom" name="pseudo" placeholder="Nom" required />
+
+        <label for="prenom">Prénom :</label>
+        <input class="saisi" type="text" id="prenom" name="pseudo" placeholder="Prénom" required />
+
+        <label for="email">Email :</label>
+        <input class="saisi" type="email" id="email" name="email" placeholder="jean@gmail.com" required />
+
+        <label for="password">Mot de passe :</label>
+        <input type="password" id="password" name="password" class="saisi" autocomplete="new-password" required />
+
+        <label for="sexe">Sexe :</label>
+        <select id="sexe" name="sexe" required>
+            <option value="" disabled selected>-- Choisissez --</option>
+            <option value="HOMME">HOMME</option>
+            <option value="FEMME">FEMME</option>
+        </select>
+
+        <label for="date">Date de naissance :</label>
+        <input type="date" id="date" name="date" required />
+
+        <input class="button" type="submit" name="valider" value="S'inscrire" />
+    </form>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('navMenu');
+            if (menu.style.display === 'flex') {
+                menu.style.display = 'none';
+            } else {
+                menu.style.display = 'flex';
+                menu.style.flexDirection = 'column';
+            }
+        }
+
+        // Fermer le menu si clic en dehors
+        window.addEventListener('click', function(e) {
+            const menu = document.getElementById('navMenu');
+            const icon = document.querySelector('.menu-icon');
+            if (!menu.contains(e.target) && !icon.contains(e.target)) {
+                menu.style.display = 'none';
+            }
+        });
+    </script>
+
+</body>
+</html>

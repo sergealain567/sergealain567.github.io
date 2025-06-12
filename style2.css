@@ -1,0 +1,29 @@
+
+form{
+    text-align:center;
+    padding: 0%;
+    background-color: bisque;
+    margin:67px;
+    border-radius: 56px;
+}
+
+p{
+    font-size: 25px;
+}
+
+.clignote{
+    color:bleu;
+    animation:clignote 1s linear infinite;
+}
+@keyframes clignote {
+    50% { opacity:0;}
+}
+.saisi{
+    background-color:aquamarine;
+}
+/*style du button*/
+.button{
+    padding:15px;
+    
+    
+}
